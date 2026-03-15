@@ -48,7 +48,7 @@ public class BaseTest {
   
 
         // Load properties files
-        fr = new FileReader(System.getProperty("user.dir") + "\\src\\test\\resources\\configfiles\\config.properties");
+        FileReader fr = new FileReader(System.getProperty("user.dir") + "/src/test/resources/configfiles/config.properties");
         fr1 = new FileReader(System.getProperty("user.dir") + "\\src\\test\\resources\\configfiles\\locators.properties");
         prop.load(fr);
         loc.load(fr1);
