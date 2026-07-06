@@ -35,7 +35,7 @@ public class BaseTest {
     public static ExtentReports extent;
     public static ExtentTest test;
 
-    @BeforeTest
+    @BeforeMethod
     public void setUp() throws IOException {
         // Initialize Extent Reports
         String reportPath = System.getProperty("user.dir") + "/test-output/ExtentReport.html";
@@ -107,7 +107,7 @@ public class BaseTest {
     }
 
 
-    @AfterTest
+    @AfterMethod
     public void tearDown() {
         // Close the browser
         if (driver != null) {
