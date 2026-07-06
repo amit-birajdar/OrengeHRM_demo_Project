@@ -16,7 +16,10 @@ public class ExcelUtility {
 
     // Load the Excel file
     public static void loadExcel(String filePath) throws IOException {
-        FileInputStream fis = new FileInputStream(new File("E:\\OrengeHRM.xlsx"));
+        String excelPath = System.getProperty("user.dir")
+        + "/src/test/resources/testdata/OrengeHRM.xlsx";
+
+FileInputStream fis = new FileInputStream(excelPath);
         workbook = new XSSFWorkbook(fis);
     }
 
