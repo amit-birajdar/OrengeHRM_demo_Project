@@ -1,45 +1,53 @@
-name: OrangeHRM CI Pipeline
+name: OrangeHRM Selenium CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   workflow_dispatch:
 
 jobs:
-  test:
+  selenium:
 
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Source Code
+
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Java 21
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '21'
           cache: maven
 
-      - name: Verify Java
-        run: java -version
+      - name: Install Google Chrome
+        uses: browser-actions/setup-chrome@v1
 
-      - name: Verify Maven
-        run: mvn -version
+      - name: Verify Chrome
+        run: chrome --version
 
       - name: Build Project
         run: mvn clean compile
 
-      - name: Execute TestNG Tests
+      - name: Execute TestNG Suite
         run: mvn test
 
-      - name: Upload TestNG Report
+      - name: Upload Extent Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: TestNG-Report
+          name: ExtentReport
           path: test-output/
+
+      - name: Upload Screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Screenshots
+          path: screenshots/
