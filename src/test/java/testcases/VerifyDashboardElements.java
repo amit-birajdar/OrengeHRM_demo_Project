@@ -15,7 +15,10 @@ public class VerifyDashboardElements extends BaseTest {
 	 @Test
 	    public void verifyDashboardElements() throws IOException {
 	        // Load credentials from Excel
-	        ExcelUtility.loadExcel("E:\\OrengeHRM.xlsx");
+	        String excelPath = System.getProperty("user.dir")
+        + "/src/test/resources/OrengeHRM.xlsx";
+
+ExcelUtility.loadExcel(excelPath);
 	        String username = ExcelUtility.getCellData(0, 1, 0); // First row, first column
 	        String password = ExcelUtility.getCellData(0, 1, 1); // First row, second column
 
