@@ -98,12 +98,6 @@ public class LoginPage extends BaseTest {
        
      }
         
-        @AfterMethod
-        public void tearDown() {
-            // Quit the browser after each test
-            if (driver != null) {
-                driver.quit();
-                driver = null; 
             }
         }
 
